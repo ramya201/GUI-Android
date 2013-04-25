@@ -1,0 +1,47 @@
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="false"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="31dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/LblThickness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:text="@string/select_line_thickness"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <NumberPicker
+            android:id="@+id/numberPicker1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp" />
+
+        <TextView
+            android:id="@+id/LblColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:text="@string/select_color"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Spinner
+            android:id="@+id/color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/BtnOK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="submitChoice"
+            android:text="OK" />
+
+    </LinearLayout>
