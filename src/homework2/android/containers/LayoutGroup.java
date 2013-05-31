@@ -112,8 +112,8 @@ public class LayoutGroup implements Group {
 		BoundaryRectangle brect = getBoundingBox();
 		Path groupShape = new Path();
 		groupShape.addRect(brect.x,brect.y,(brect.x+brect.width),(brect.y+brect.height),Path.Direction.CCW);
-		int x1 = 0;
-		int y1 = 0;
+		int x1 = offset;
+		int y1 = offset;
 		for (GraphicalObject g:children) {
 			g.moveTo(x1, y1);
 			g.draw(graphics,groupShape);
@@ -245,8 +245,9 @@ public class LayoutGroup implements Group {
 
 	@Override
 	public Point childToParent(Point pt) {
-		int x = this.x + pt.x;
-		int y = this.y + pt.y;
+		Point conv_pt = group.childToParent(new Point(this.x,this.y));
+		int x = conv_pt.x + pt.x;
+		int y = conv_pt.y + pt.y;
 		return new Point(x,y);
 	}
 

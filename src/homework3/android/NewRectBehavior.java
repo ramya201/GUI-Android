@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.graphics.Point;
 import homework2.android.GraphicalObject;
 import homework2.android.Group;
+import homework2.android.objects.FilledRect;
 import homework2.android.objects.OutlineRect;
 
 public class NewRectBehavior extends NewBehavior {
@@ -11,19 +12,24 @@ public class NewRectBehavior extends NewBehavior {
 	private int state;
 	private BehaviorEvent startEvent;
 	private BehaviorEvent stopEvent;
-	private int color;
-	private int lineThickness;
+	protected int color;
+	protected int lineThickness;
 	private GraphicalObject newObject;
 	private Point eventPosition;
 	private SelectionHandles selectGrp = null;
-	
-	public NewRectBehavior(boolean onePoint, int color, int lineThickness) {
+	private int type;
+
+	public static final int  OUTLINE = 0;
+	public static final int  FILLED = 1;
+
+	public NewRectBehavior(boolean onePoint, int color, int lineThickness, int type) {
 		super(onePoint);
 		state = Behavior.IDLE;
 		this.color = color;
 		this.lineThickness = lineThickness;
+		this.type = type;
 	}
-	
+
 	public int getColor() {
 		return color;
 	}
@@ -50,6 +56,18 @@ public class NewRectBehavior extends NewBehavior {
 		this.group = group;		
 	}
 
+	public GraphicalObject getNewObject() {
+		return newObject;
+	}
+	
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
 	@Override
 	public int getState() {
 		return state;
@@ -63,7 +81,7 @@ public class NewRectBehavior extends NewBehavior {
 	@Override
 	public void setStartEvent(BehaviorEvent mask) {
 		this.startEvent = mask;
-		
+
 	}
 
 	@Override
@@ -108,28 +126,54 @@ public class NewRectBehavior extends NewBehavior {
 
 	@Override
 	public GraphicalObject make(int x1, int y1, int x2, int y2) {
-		OutlineRect rect = new OutlineRect(x1,y1,x2-x1,y2-y1,color,lineThickness);
+		GraphicalObject rect = null;
+		if (type == NewRectBehavior.OUTLINE) {
+			rect = new OutlineRect(x1,y1,x2-x1,y2-y1,color,lineThickness);
+		} else if (type == NewRectBehavior.FILLED) {
+			rect = new FilledRect(x1,y1,x2-x1,y2-y1,color);
+			lineThickness = 0;
+		}
 		return rect;
 	}
 
 	@Override
 	public void resize(GraphicalObject gobj, int x1, int y1, int x2, int y2) {
-		if (x2 > x1 && y2>y1) {
-			((OutlineRect) gobj).setWidth(x2-x1+1);		
-			((OutlineRect) gobj).setHeight(y2-y1+1);
-		} else if (x2 < x1 && y2 > y1) {
-			((OutlineRect) gobj).setX(x2);
-			((OutlineRect) gobj).setWidth(x1-x2+1);
-			((OutlineRect) gobj).setHeight(y2-y1+1);			
-		} else if (x2>x1 && y2<y1) {
-			((OutlineRect) gobj).setY(y2);
-			((OutlineRect) gobj).setWidth(x2-x1+1);
-			((OutlineRect) gobj).setHeight(y1-y2+1);
-		} else if ( x2 < x1 && y2 < y1) {
-			((OutlineRect) gobj).setX(x2);
-			((OutlineRect) gobj).setY(y2);
-			((OutlineRect) gobj).setWidth(x1-x2+1);
-			((OutlineRect) gobj).setHeight(y1-y2+1);
+		if (type == NewRectBehavior.OUTLINE) {
+			if (x2 > x1 && y2>y1) {
+				((OutlineRect) gobj).setWidth(x2-x1+1);		
+				((OutlineRect) gobj).setHeight(y2-y1+1);
+			} else if (x2 < x1 && y2 > y1) {
+				((OutlineRect) gobj).setX(x2);
+				((OutlineRect) gobj).setWidth(x1-x2+1);
+				((OutlineRect) gobj).setHeight(y2-y1+1);			
+			} else if (x2>x1 && y2<y1) {
+				((OutlineRect) gobj).setY(y2);
+				((OutlineRect) gobj).setWidth(x2-x1+1);
+				((OutlineRect) gobj).setHeight(y1-y2+1);
+			} else if ( x2 < x1 && y2 < y1) {
+				((OutlineRect) gobj).setX(x2);
+				((OutlineRect) gobj).setY(y2);
+				((OutlineRect) gobj).setWidth(x1-x2+1);
+				((OutlineRect) gobj).setHeight(y1-y2+1);
+			}
+		} else if (type == NewRectBehavior.FILLED) {
+			if (x2 > x1 && y2>y1) {
+				((FilledRect) gobj).setWidth(x2-x1+1);		
+				((FilledRect) gobj).setHeight(y2-y1+1);
+			} else if (x2 < x1 && y2 > y1) {
+				((FilledRect) gobj).setX(x2);
+				((FilledRect) gobj).setWidth(x1-x2+1);
+				((FilledRect) gobj).setHeight(y2-y1+1);			
+			} else if (x2>x1 && y2<y1) {
+				((FilledRect) gobj).setY(y2);
+				((FilledRect) gobj).setWidth(x2-x1+1);
+				((FilledRect) gobj).setHeight(y1-y2+1);
+			} else if ( x2 < x1 && y2 < y1) {
+				((FilledRect) gobj).setX(x2);
+				((FilledRect) gobj).setY(y2);
+				((FilledRect) gobj).setWidth(x1-x2+1);
+				((FilledRect) gobj).setHeight(y1-y2+1);
+			}
 		}
 	}
 }

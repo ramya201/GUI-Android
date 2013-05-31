@@ -101,7 +101,7 @@ public class Homework2AndroidActivity extends Activity {
         
         bTestHomework2 = (Button) findViewById(R.id.testDrawingEditor);
         //bTestHomework2.setEnabled(false);
-        bTestHomework2.setText("TestDrawingEditor");
+        bTestHomework2.setText("TestWidgetToolkit");
         bTestHomework2.setOnClickListener(new OnClickListener(){
         	public void onClick(View v){
         		Log.d("DV", "onClick  View  == "+v);	

@@ -7,7 +7,7 @@
     <string name="menu_settings">Settings</string>
     <string name="title_activity_drawing_editor">DrawingEditor</string>
     <string name="draw_rectangle">draw_rectangle</string>
-    <string name="select">select</string>
+    <string name="select">Select</string>
     <string name="draw_line">draw_line</string>
     <string name="title_activity_draw">DrawActivity</string>
     <string name="title_activity_drawing">DrawingActivity</string>
@@ -16,13 +16,16 @@
     <string name="move_object">move object</string>
     <string name="select_object">select object</string>
     <string name="select_icon">select_icon</string>
-    <string name="move">move</string>
+    <string name="move">Move</string>
     <string name="title_activity_rect_parameters">RectParameters</string>
     <string name="select_line_thickness">Select Line Thickness</string>
     <string name="select_color">Select Color</string>
+     <string name="title_activity_panel_type">DrawingEditor</string>
+     <string name="title_activity_button_parameters">DrawingEditor</string>
 
     <string-array name="colors_array">
         <item>BLACK</item>
+        <item>LTGRAY</item>
         <item>RED</item>
         <item>BLUE</item>
         <item>GREEN</item>
@@ -37,6 +40,16 @@
         <item>TOGGLE</item>
         <item>MULTIPLE</item>
     </string-array>
+    
+    <string-array name="selection_array">
+        <item>YES</item>
+        <item>NO</item>
+    </string-array>
+    
+     <string-array name="layout_array">
+        <item>VERTICAL</item>
+        <item>HORIZONTAL</item>
+    </string-array>
 
     <string name="title_activity_choice_type">ChoiceType</string>
 
@@ -45,5 +58,41 @@
     <string name="ok">OK</string>
 
     <string name="test_homework_4">Test Homework 4</string>
+
+    <string name="button">Button</string>
+
+    <string name="line">Line</string>
+
+    <string name="buttonpanel">ButtonPanel</string>
+
+    <string name="draw_panel">Draw Panel</string>
+
+    <string name="select_offset">Select Offset</string>
+
+    <string name="select_layout">Select Layout</string>
+
+    <string name="select_final_selection_option">Select Final Selection option</string>
+
+    <string name="label">Label</string>
+    
+    <string name="add_label">Add Label</string>
+    
+    <string name="enter_width">Enter Width</string>
+    
+    <string name="enter_height">Enter Height</string>
+    
+    <string name="select_backcolor">Select Backcolor</string>
+    
+    <string name="select_forecolor">Select Forecolor</string>
+    
+    <string name="enter_text">Enter Text</string>
+    
+    <string name="checkbox">CheckBox</string>
+    
+    <string name="panel">Panel</string>
+    
+    <string name="radio_box">RadioBox</string>
+    
+    <string name="no_slider">No.Slider</string>
 
 </resources>

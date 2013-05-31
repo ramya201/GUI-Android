@@ -54,7 +54,7 @@ public class WindowGroup extends Activity implements Group {
 			debugString = "";
 		}
 
-		println("Starting WindowGroup");
+		//println("Starting WindowGroup");
 
 		drawView = (DrawView) findViewById(R.id.drawView);		
 		drawView.setOnClickListener(new OnClickListener(){

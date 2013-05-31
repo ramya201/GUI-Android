@@ -2,62 +2,190 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal" android:baselineAligned="false">
+    android:baselineAligned="false"
+    android:orientation="horizontal" >
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="0.05"
+        android:layout_weight="0.01"
         android:orientation="vertical" >
 
-        <ImageButton
-            android:id="@+id/rectBtn"
+        
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/draw_rectangle"
-            android:onClick="newRect"
-            android:src="@drawable/icon_rectangle" />
+            android:orientation="horizontal" >
 
-        <ImageButton
-            android:id="@+id/lineBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/draw_line"
-            android:onClick="newLine"
-            android:src="@drawable/line_icon" />
+            <ImageButton
+                android:id="@+id/panelBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/draw_panel"
+                android:onClick="drawPanel"
+                android:src="@drawable/icon_rectangle" />
 
-        <ImageButton
-            android:id="@+id/selectBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/select"
-            android:maxWidth="32dp"
-            android:onClick="select"
-            android:src="@drawable/select_icon" />
+            <TextView
+                android:id="@+id/BtnPanelLbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/panel" />
+        </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/moveBtn"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/move"
-            android:onClick="move"
-            android:src="@drawable/move_icon" />
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/rectBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/draw_rectangle"
+                android:onClick="newRect"
+                android:src="@drawable/icon_rectangle" />
+
+            <TextView
+                android:id="@+id/rectBtnLbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button" />
+        </LinearLayout>
+	
+           <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+		
+            <ImageButton
+                android:id="@+id/checkBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/add_label"
+                android:onClick="addCheckBox"
+                android:src="@drawable/checkbox" />
+            
+            <TextView
+                android:id="@+id/Lbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/checkbox" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+		
+            <ImageButton
+                android:id="@+id/radioBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/add_label"
+                android:onClick="addRadioBox"
+                android:src="@drawable/radio" />
+            
+            <TextView
+                android:id="@+id/LblRadio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_box" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/ImageButton01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/add_label"
+                android:onClick="addSlider"
+                android:src="@drawable/slider" />
+
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_slider" />
+        </LinearLayout>
+        
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/lineBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/draw_line"
+                android:onClick="newLine"
+                android:src="@drawable/line_icon" />
+
+            <TextView
+                android:id="@+id/lineBtnLbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/line" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/selectBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/select"
+                android:maxWidth="32dp"
+                android:onClick="select"
+                android:src="@drawable/select_icon" />
+
+            <TextView
+                android:id="@+id/selectBtnLbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/select" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/moveBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/move"
+                android:onClick="move"
+                android:src="@drawable/move_icon" />
+
+            <TextView
+                android:id="@+id/moveBtnLbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/move" />
+        </LinearLayout>
+        
+           
     </LinearLayout>
-
+    
     <LinearLayout
         android:layout_width="187dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.96"
+        android:layout_weight="0.03"
         android:orientation="vertical" >
-
-       
 
         <homework2.android.DrawView
             android:id="@+id/drawView"
-            android:layout_width="272dp"
-            android:layout_height="match_parent" >
-
-        </homework2.android.DrawView>
+            android:layout_width="match_parent"
+            android:layout_height="350dp" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -67,7 +195,7 @@
             <TextView
                 android:id="@+id/debugText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_gravity="bottom" >
             </TextView>
         </ScrollView>

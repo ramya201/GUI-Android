@@ -29,7 +29,7 @@ public class NodeEdgeEditor extends InteractiveWindowGroup {
 		edge.setStartEvent(new BehaviorEvent(BehaviorEvent.MOUSE_DOWN_ID, 0, BehaviorEvent.LEFT_MOUSE_KEY, 0, 0));
 		edge.setStopEvent(new BehaviorEvent(BehaviorEvent.MOUSE_UP_ID, 0, BehaviorEvent.LEFT_MOUSE_KEY, 0, 0));
 		
-		addBehavior(edge);
+		addBehavior("EdgeBehavior",edge);
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class NodeEdgeEditor extends InteractiveWindowGroup {
 		} 
 
 		
-		for (Behavior b: behaviors) {
+		for (Behavior b: behaviors.values()) {
 			if (b.getClass().getName().equals(currSelection)) {
 				if (b.getState() == Behavior.IDLE) {
 					if (b.getStartEvent().matches(e1)) {

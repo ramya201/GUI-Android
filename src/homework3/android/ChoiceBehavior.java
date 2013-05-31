@@ -40,6 +40,14 @@ public class ChoiceBehavior implements Behavior {
 		this.type = type;
 	}
 
+	public boolean isFirstOnly() {
+		return firstOnly;
+	}
+
+	public void setFirstOnly(boolean firstOnly) {
+		this.firstOnly = firstOnly;
+	}
+
 	@Override
 	public Group getGroup() {
 		return group;
@@ -87,11 +95,12 @@ public class ChoiceBehavior implements Behavior {
 			for (GraphicalObject g:group.getChildren()) {
 				if (g.getBoundingBox().contains(event.getX(), event.getY()) && (g instanceof Selectable)) {
 					state = Behavior.RUNNING_INSIDE;				
-					((Selectable)g).setInterimSelected(true);
-					
+
 					if ((type == TOGGLE || type == MULTIPLE) && ((Selectable)g).isSelected() == true) {
 						((Selectable)g).setInterimSelected(false);
 						((Selectable)g).setSelected(false);
+					} else if (type == SINGLE || ((type == TOGGLE || type == MULTIPLE) && ((Selectable)g).isSelected() == false)) {
+						((Selectable)g).setInterimSelected(true);
 					}
 				} else if (!g.getBoundingBox().contains(event.getX(), event.getY()) && (g instanceof Selectable) && (type != MULTIPLE) ){
 					((Selectable)g).setSelected(false);
@@ -126,8 +135,8 @@ public class ChoiceBehavior implements Behavior {
 		for (GraphicalObject g:group.getChildren()) {
 			if ((g instanceof Selectable)) { 
 				if (((Selectable)g).isInterimSelected() == true) {
-					((Selectable)g).setSelected(true);
 					((Selectable)g).setInterimSelected(false);
+					((Selectable)g).setSelected(true);
 				} 
 			} 		
 		} 		

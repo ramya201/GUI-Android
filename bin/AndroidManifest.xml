@@ -45,7 +45,7 @@
             android:label="WindowGroup" />
         <activity
             android:name="homework3.android.InteractiveWindowGroup"
-            android:label="InteractiveWindowGroup" />
+            android:label="WidgetToolkit" />
         <activity
             android:name="homework3.android.Parameters"
             android:label="@string/title_activity_rect_parameters" >
@@ -61,6 +61,14 @@
          <activity
             android:name="homework4.android.NodeEdgeEditor"
             android:label="@string/test_homework_4" >
+        </activity>
+           <activity
+            android:name="homework5.android.PanelType"
+            android:label="@string/title_activity_panel_type" >
+        </activity>
+         <activity
+            android:name="homework5.android.BtnParameters"
+            android:label="@string/title_activity_button_parameters" >
         </activity>
     </application>
 

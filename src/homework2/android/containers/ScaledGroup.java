@@ -233,8 +233,9 @@ public class ScaledGroup implements Group {
 
 	@Override
 	public Point childToParent(Point pt) {
-		int x = this.x + pt.x;
-		int y = this.y + pt.y;
+		Point conv_pt = group.childToParent(new Point(this.x,this.y));
+		int x = conv_pt.x + pt.x;
+		int y = conv_pt.y + pt.y;
 		return new Point(x,y);
 	}
 

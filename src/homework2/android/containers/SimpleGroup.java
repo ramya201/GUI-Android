@@ -1,6 +1,7 @@
 package homework2.android.containers;
 
 import homework2.android.*;
+import homework4.android.Variable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,11 @@ public class SimpleGroup implements Group {
 	private ArrayList<GraphicalObject> children = new ArrayList<GraphicalObject>();
 	private Group group;
 	private Matrix m;
+	
+	private Variable var_x;
+	private Variable var_y;
+	private Variable var_width;
+	private Variable var_height;
 
 	public SimpleGroup() {
 		this(0,0,0,0);
@@ -32,6 +38,11 @@ public class SimpleGroup implements Group {
 		this.y = y;
 		this.width = width;
 		this.height = height;
+		
+		var_x = new Variable(x,this);
+		var_y = new Variable(y,this);
+		var_width = new Variable(width,this);
+		var_height = new Variable(height,this);
 	}
 	
 	public int getX() {
@@ -53,25 +64,49 @@ public class SimpleGroup implements Group {
 	public void setX(int x) {
 		BoundaryRectangle old = getBoundingBox();
 		this.x = x;
+		var_x.setValue(x);
+		var_x.setOOD(true);
 		damage(old.union(getBoundingBox()));
 	}
 
 	public void setY(int y) {
 		BoundaryRectangle old = getBoundingBox();
 		this.y = y;
+		var_y.setValue(y);
+		var_y.setOOD(true);
 		damage(old.union(getBoundingBox()));		
 	}
 
 	public void setWidth(int width) {
 		BoundaryRectangle old = getBoundingBox();
 		this.width = width;
+		var_width.setValue(width);
+		var_width.setOOD(true);
 		damage(old.union(getBoundingBox()));
 	}
 
 	public void setHeight(int height) {
 		BoundaryRectangle old = getBoundingBox();
 		this.height = height;
+		var_height.setValue(height);
+		var_height.setOOD(true);
 		damage(old.union(getBoundingBox()));
+	}
+	
+	public Variable getVar_x() {
+		return var_x;
+	}
+
+	public Variable getVar_y() {
+		return var_y;
+	}
+
+	public Variable getVar_width() {
+		return var_width;
+	}
+
+	public Variable getVar_height() {
+		return var_height;
 	}
 
 	@Override
@@ -108,7 +143,12 @@ public class SimpleGroup implements Group {
 	public void moveTo(int x, int y) {
 		BoundaryRectangle old = getBoundingBox();
 		this.x = x;
+		var_x.setValue(x);
+		var_x.setOOD(true);
 		this.y = y;
+		var_y.setValue(y);
+		var_y.setOOD(true);
+		group.resizeChild(this);
 		damage(old.union(getBoundingBox()));
 	}
 
@@ -213,8 +253,9 @@ public class SimpleGroup implements Group {
 
 	@Override
 	public Point childToParent(Point pt) {
-		int x = this.x + pt.x;
-		int y = this.y + pt.y;
+		Point conv_pt = group.childToParent(new Point(this.x,this.y));
+		int x = conv_pt.x + pt.x;
+		int y = conv_pt.y + pt.y;
 		return new Point(x,y);
 	}
 }
